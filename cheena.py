@@ -1,7 +1,4 @@
 import streamlit as st
-import matplotlib.pyplot as plt
-from PIL import Image
-import io
 
 # Page title
 st.title("📝 Quick Health & Lifestyle Survey")
@@ -32,34 +29,9 @@ sleep = st.radio(
 # Submit button
 if st.button("Submit"):
     st.success("Thank you for your responses!")
-
-    # Prepare text for image
-    result_text = (
-        f"Quick Health & Lifestyle Survey\n\n"
-        f"👤 Name: {name}\n"
-        f"🎂 Age: {age}\n"
-        f"💪 Health Rating: {health_rating}/10\n"
-        f"🏃 Preferred Exercise: {exercise}\n"
-        f"😴 Average Sleep: {sleep}"
-    )
-
-    # Create a figure
-    fig, ax = plt.subplots(figsize=(6, 4))
-    ax.text(0.01, 0.9, result_text, fontsize=12, va='top', ha='left', wrap=True)
-    ax.axis('off')
-
-    # Save to buffer
-    buf = io.BytesIO()
-    plt.savefig(buf, format='jpeg', bbox_inches='tight')
-    buf.seek(0)
-
-    # Show image in Streamlit
-    st.image(buf, caption="Your Responses", use_column_width=True)
-
-    # Provide download button
-    st.download_button(
-        label="📥 Download Your Survey Summary (JPEG)",
-        data=buf,
-        file_name="survey_summary.jpeg",
-        mime="image/jpeg"
-    )
+    st.write("Here's what you shared:")
+    st.write(f"👤 Name: **{name}**")
+    st.write(f"🎂 Age: **{age}**")
+    st.write(f"💪 Health Rating: **{health_rating}/10**")
+    st.write(f"🏃 Preferred Exercise: **{exercise}**")
+    st.write(f"😴 Average Sleep: **{sleep}**")
