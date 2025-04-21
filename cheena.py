@@ -43,7 +43,7 @@ if st.button("Submit"):
         f"🎂 Age: {age}\n"
         f"💪 Health Rating: {health_rating}/10\n"
         f"🏃 Preferred Exercise: {exercise}\n"
-        f"😴 hobby: {hobby}"
+        f"😉 hobby: {hobby}"
         f"😴 Average Sleep: {sleep}"
         
         
@@ -69,3 +69,6 @@ if st.button("Submit"):
         file_name="survey_summary.jpeg",
         mime="image/jpeg"
     )
+
+st.write(name , "Ye ab Whatsapp kar do ")
+
