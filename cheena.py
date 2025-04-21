@@ -60,7 +60,7 @@ if st.button("Submit"):
     buf.seek(0)
 
     # Show image in Streamlit
-    st.image(buf, caption="Your Responses", use_column_width=True)
+    st.image(buf, caption="Your Responses", use_container_width=True)
 
     # Provide download button
     st.download_button(
