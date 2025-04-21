@@ -1,5 +1,7 @@
 import streamlit as st
-# from fpdf import FPDF
+import matplotlib.pyplot as plt
+from PIL import Image
+import io
 
 # Page title
 st.title("📝 Quick Health & Lifestyle Survey")
@@ -27,49 +29,37 @@ sleep = st.radio(
     ["Less than 5", "5-6", "6-7", "7-8", "More than 8"]
 )
 
-# Function to create PDF
-def create_pdf(name, age, health_rating, exercise, sleep):
-    pdf = FPDF()
-    pdf.set_auto_page_break(auto=True, margin=15)
-    pdf.add_page()
-
-    # Set font
-    pdf.set_font("Arial", size=12)
-
-    # Add a title
-    pdf.cell(200, 10, txt="Quick Health & Lifestyle Survey", ln=True, align='C')
-
-    # Add the user responses
-    pdf.ln(10)
-    pdf.cell(200, 10, txt=f"👤 Name: {name}", ln=True)
-    pdf.cell(200, 10, txt=f"🎂 Age: {age}", ln=True)
-    pdf.cell(200, 10, txt=f"💪 Health Rating: {health_rating}/10", ln=True)
-    pdf.cell(200, 10, txt=f"🏃 Preferred Exercise: {exercise}", ln=True)
-    pdf.cell(200, 10, txt=f"😴 Average Sleep: {sleep}", ln=True)
-
-    # Save PDF to a BytesIO buffer
-    pdf_output = pdf.output(dest='S', format='pdf')
-    return pdf_output
-
 # Submit button
 if st.button("Submit"):
     st.success("Thank you for your responses!")
 
-    # Display responses on the webpage
-    st.write("Here's what you shared:")
-    st.write(f"👤 Name: **{name}**")
-    st.write(f"🎂 Age: **{age}**")
-    st.write(f"💪 Health Rating: **{health_rating}/10**")
-    st.write(f"🏃 Preferred Exercise: **{exercise}**")
-    st.write(f"😴 Average Sleep: **{sleep}**")
+    # Prepare text for image
+    result_text = (
+        f"Quick Health & Lifestyle Survey\n\n"
+        f"👤 Name: {name}\n"
+        f"🎂 Age: {age}\n"
+        f"💪 Health Rating: {health_rating}/10\n"
+        f"🏃 Preferred Exercise: {exercise}\n"
+        f"😴 Average Sleep: {sleep}"
+    )
 
-    # Create PDF from responses
-    pdf_output = create_pdf(name, age, health_rating, exercise, sleep)
+    # Create a figure
+    fig, ax = plt.subplots(figsize=(6, 4))
+    ax.text(0.01, 0.9, result_text, fontsize=12, va='top', ha='left', wrap=True)
+    ax.axis('off')
 
-    # Allow the user to download the PDF
+    # Save to buffer
+    buf = io.BytesIO()
+    plt.savefig(buf, format='jpeg', bbox_inches='tight')
+    buf.seek(0)
+
+    # Show image in Streamlit
+    st.image(buf, caption="Your Responses", use_column_width=True)
+
+    # Provide download button
     st.download_button(
-        label="📥 Download Your Survey Summary (PDF)",
-        data=pdf_output,
-        file_name="survey_summary.pdf",
-        mime="application/pdf"
+        label="📥 Download Your Survey Summary (JPEG)",
+        data=buf,
+        file_name="survey_summary.jpeg",
+        mime="image/jpeg"
     )
