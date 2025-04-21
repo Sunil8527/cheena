@@ -12,18 +12,21 @@ st.write("Can Your answer of this Questions:")
 name = st.text_input("1. What is your name? well I know but fir bhi Bata do😭😭")
 
 # 2. Age
-age = st.number_input("2. How old are you?", min_value=0, max_value=120, step=1)
+age = st.number_input("2. How old are you? Real wala yrr ok !", min_value=0, max_value=120, step=1)
 
 # 3. Health rating
 health_rating = st.slider("3. How would you rate your current health?", 1, 10, 5)
 
-# 4. Preferred exercise
+#4. Hobby
+hobby = st.text_input("1. What is your hobby? ")
+
+# 5. Preferred exercise
 exercise = st.selectbox(
     "4. What is your preferred type of exercise?",
     ["Walking", "Running", "Yoga", "Cycling", "Gym", "None"]
 )
 
-# 5. Average sleep
+# 6. Average sleep
 sleep = st.radio(
     "5. How many hours do you sleep on average?",
     ["Less than 5", "5-6", "6-7", "7-8", "More than 8"]
@@ -40,7 +43,10 @@ if st.button("Submit"):
         f"🎂 Age: {age}\n"
         f"💪 Health Rating: {health_rating}/10\n"
         f"🏃 Preferred Exercise: {exercise}\n"
+        f"😴 hobby: {hobby}"
         f"😴 Average Sleep: {sleep}"
+        f"😴 Average Sleep: {sleep}"
+        
     )
 
     # Create a figure
