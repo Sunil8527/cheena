@@ -4,7 +4,7 @@ from PIL import Image
 import io
 
 # Page title
-st.title("📝 Quick Health & Lifestyle Survey")
+st.title("📝 Hi Dear Senorita😊")
 
 st.write("Please answer the following questions:")
 
