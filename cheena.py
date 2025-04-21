@@ -53,7 +53,7 @@ if st.button("Submit"):
     )
 
     # Create a figure
-    fig, ax = plt.subplots(figsize=(6, 4))
+    fig, ax = plt.subplots(figsize=(8, 6))
     ax.text(0.01, 0.9, result_text, fontsize=12, va='top', ha='left', wrap=True)
     ax.axis('off')
 
