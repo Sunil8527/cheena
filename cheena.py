@@ -45,7 +45,7 @@ if st.button("Submit"):
         f"🏃 Preferred Exercise: {exercise}\n"
         f"😴 hobby: {hobby}"
         f"😴 Average Sleep: {sleep}"
-        f"😴 Average Sleep: {sleep}"
+        
         
     )
 
