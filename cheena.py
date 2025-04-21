@@ -6,10 +6,10 @@ import io
 # Page title
 st.title("📝 Hi Dear Senorita😊")
 
-st.write("Please answer the following questions:")
+st.write("Can Your answer of this Questions:")
 
 # 1. Name
-name = st.text_input("1. What is your name?")
+name = st.text_input("1. What is your name? well I know but fir bhi Bata do😭😭")
 
 # 2. Age
 age = st.number_input("2. How old are you?", min_value=0, max_value=120, step=1)
