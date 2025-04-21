@@ -46,7 +46,7 @@ if st.button("Submit"):
         f"😉 hobby: {hobby}"
         f"😴 Average Sleep: {sleep}"
 
-       st.write(name , "Ye ab Whatsapp kar do ")
+       f"st.write(name , "Ye ab Whatsapp kar do ")"
         
         
     )
